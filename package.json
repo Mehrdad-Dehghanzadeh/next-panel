@@ -1,12 +1,29 @@
 {
   "name": "next-panel",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": {
+    "name": "Mehrdad Dehghanzadeh",
+    "email": "mehrdad.dehghanzadeh.dev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mehrdad-Dehghanzadeh/next-panel.git"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.{js,jsx,css,md,tsx,ts}": "prettier --write"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -14,12 +31,16 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
+    "eslint": "^9.39.5",
     "eslint-config-next": "16.3.5",
-    "typescript": "^5"
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "pretty-quick": "^4.2.2",
+    "simple-git-hooks": "^2.14.0",
+    "typescript": "^5.9.3"
   }
 }
