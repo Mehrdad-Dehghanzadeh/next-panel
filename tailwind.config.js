@@ -9,7 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
-
+    fontFamily: {
+      sans: ['iranYekan', 'sans-serif']
+    },
     container: {
       center: true,
       padding: '16px'

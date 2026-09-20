@@ -34,3 +34,8 @@ svg {
   direction: rtl;
   unicode-bidi: plaintext;
 }
+
+:root,
+.radix-themes {
+  --default-font-family: iranYekan !important;
+}

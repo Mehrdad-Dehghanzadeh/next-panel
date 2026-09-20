@@ -33,7 +33,9 @@
       "@hooks/*": ["./src/hooks/*"],
       "@hooks": ["./src/hooks"],
       "@assets/*": ["./src/assets/*"],
-      "@assets": ["./src/assets"]
+      "@assets": ["./src/assets"],
+      "@constants/*": ["./src/constants/*"],
+      "@constants": ["./src/constants"]
     }
   },
   "include": [
