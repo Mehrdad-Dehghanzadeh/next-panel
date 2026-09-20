@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { Direction } from 'radix-ui'
 import { Theme } from '@radix-ui/themes'
-import { Snackbar } from '@Roots'
+import { Snackbar, MainHeader } from '@Roots'
 import localFont from 'next/font/local'
 import '@styles/index.css'
+import './layout.css'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -63,7 +64,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <body className={iranYekan.className}>
           <Theme>
             <Snackbar />
-            {children}
+
+            <div id="root">
+              <MainHeader />
+            </div>
           </Theme>
         </body>
       </Direction.Provider>
