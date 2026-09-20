@@ -1,0 +1,16 @@
+/***** Variables *****/
+@import url('./variables/_colors.css');
+/***** Variables *****/
+
+/***** Keyframes *****/
+@import url('./keyframes/_hide.css');
+@import url('./keyframes/_slideIn.css');
+@import url('./keyframes/_swipeOut.css');
+/***** Keyframes *****/
+
+/***** Base *****/
+@import url('./base/_fonts.css');
+@import url('./base/_tailwind.css');
+@import url('./base//_reset.css');
+@import url('@radix-ui/themes/styles.css');
+/***** Base *****/

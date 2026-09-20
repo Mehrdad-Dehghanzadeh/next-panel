@@ -23,7 +23,17 @@
       "@app/*": ["./src/app/*"],
       "@utils/*": ["./src/utils/*"],
       "@utils": ["./src/utils"],
-      "@ts/*": ["./src/ts/*"]
+      "@ts/*": ["./src/ts/*"],
+      "@UIKits": ["./src/components/UIKits"],
+      "@UIKits/*": ["./src/components/UIKits/*"],
+      "@Roots": ["./src/components/Roots"],
+      "@Roots/*": ["./src/components/Roots/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@styles": ["./src/styles"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@hooks": ["./src/hooks"],
+      "@assets/*": ["./src/assets/*"],
+      "@assets": ["./src/assets"]
     }
   },
   "include": [
