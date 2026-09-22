@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Direction } from 'radix-ui'
 import { Theme } from '@radix-ui/themes'
-import { Snackbar, MainHeader } from '@Roots'
+import { Snackbar, MainHeader, AsideMenu, MainContainer } from '@Roots'
 import localFont from 'next/font/local'
 import '@styles/index.css'
 import './layout.css'
@@ -66,7 +66,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             <Snackbar />
 
             <div id="root">
+              <AsideMenu />
               <MainHeader />
+              <MainContainer>{children}</MainContainer>
             </div>
           </Theme>
         </body>

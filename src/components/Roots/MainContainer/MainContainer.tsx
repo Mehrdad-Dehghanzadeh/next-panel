@@ -1,11 +1,10 @@
 'use client'
-import { PropsWithChildren, type FC, Suspense, use, useState } from 'react'
-import { Container } from '@radix-ui/themes'
+import { PropsWithChildren, type FC, Suspense } from 'react'
 
 export const MainContainer: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Container className="main-container">
+    <main id="main-container" className="main-container">
       <Suspense fallback={<h1>'loading'</h1>}>{children}</Suspense>
-    </Container>
+    </main>
   )
 }

@@ -1,2 +1,32 @@
-.aside-menu {
+.aside-menu__top {
+  background-color: #0e1b6b;
+  padding: 20px 32px;
+}
+
+.aside-menu-nav {
+  padding-top: 24px;
+  background-color: #131c55;
+}
+
+.aside-menu__logo {
+  width: auto;
+  height: auto;
+}
+
+.aside-menu-nav__list {
+  color: #fff;
+  padding: 0 24px;
+}
+
+.aside-menu-nav__item {
+  margin-bottom: 12px;
+}
+
+.aside-menu-nav__link {
+  color: #fff;
+  display: block;
+  text-align: center;
+  padding: 8px 12px;
+  background-color: #4256d0;
+  border-radius: 12px;
 }

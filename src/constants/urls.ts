@@ -5,7 +5,7 @@ export const URLS: TUrls = {
   },
 
   t: {
-    href: '/',
+    href: '/a',
     title: 'دوم'
   }
 }

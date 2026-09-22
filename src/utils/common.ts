@@ -61,3 +61,11 @@ export function downloadBase64(name: string, base64: string, type: string = ''):
   a.download = name
   a.click()
 }
+
+export function logout() {
+  window.location.href = new URL('/logout', window.location.origin).toString()
+}
+
+export function goHome() {
+  window.location.href = new URL('/home', window.location.href).toString()
+}
