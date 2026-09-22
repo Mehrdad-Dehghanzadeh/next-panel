@@ -49,5 +49,9 @@
     "simple-git-hooks": "^2.14.0",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3"
+  },
+  "allowScripts": {
+    "simple-git-hooks@2.14.0": true,
+    "unrs-resolver@1.12.2": true
   }
 }
