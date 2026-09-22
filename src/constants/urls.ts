@@ -1,4 +1,4 @@
-export const URLS: TUrls = {
+export const URLS: Urls = {
   home: {
     href: '/',
     title: 'خانه'
@@ -10,4 +10,4 @@ export const URLS: TUrls = {
   }
 }
 
-export const MENU_ITEMS: TUrlList = [URLS.home, URLS.t]
+export const MENU_ITEMS: UrlList = [URLS.home, URLS.t]

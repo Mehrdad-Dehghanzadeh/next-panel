@@ -52,31 +52,44 @@ declare module '*.css'
 declare module '*.scss'
 declare module '*.sass'
 
-type TUrl = {
+type Url = {
   href: string
   title?: string
 }
 
-type TUrlItem = TUrl & {
+type UrlItem = Url & {
   icon?: ReactNode
 }
 
-type TUrlList = TUrlItem[]
+type UrlList = UrlItem[]
 
-type TUrls = Record<string, TUrlItem>
-interface IResponse<T = any> {
+type Urls = Record<string, TUrlItem>
+interface ApiResponse<T = any> {
   payload: { data: T }
   status_code: number
   status_message: string
 }
 
-interface IResponseRaw<T = any> {
+interface ApiResponseRaw<T = any> {
   payload: T
   status_code: number
   status_message: string
 }
 
-type TDataList = {
+type DataList = {
   key: string | number | ReactNode
   value: string | number | ReactNode
 }[]
+
+type Sorts = 'Des' | 'Aes' | 'None'
+
+type DataTablePaginate = {
+  page: number
+  pageSize: number
+  totalItem?: number
+}
+
+type DataTableSort = {
+  field: string
+  type: Sorts
+}
