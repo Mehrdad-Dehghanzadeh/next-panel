@@ -40,7 +40,7 @@ type EnumType = {
   [key: string]: unknown
 }
 
-type TMapperItem = {
+type MapperItem = {
   text: string | number
   color?: string | TColor
   icon?: any
@@ -93,3 +93,11 @@ type DataTableSort = {
   field: string
   type: Sorts
 }
+
+type SelectOption<T = any> = {
+  title: string
+  value: string | number | EmptyString | boolean
+  itemData?: T
+}
+
+type SelectOptions<T = any> = TSelectOption<T>[]
