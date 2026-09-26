@@ -7,7 +7,7 @@ type TOmitted = 'size' | 'type' | 'color'
 
 export type InputFieldProps = Omit<ComponentProps<'input'>, TOmitted> &
   InputProps &
-  ComponentProps<typeof TextField.Root> & {
+  TextField.RootProps & {
     type?: 'number' | 'text' | 'tel' | 'email' | 'url'
     suffix?: ReactNode
     prefix?: ReactNode

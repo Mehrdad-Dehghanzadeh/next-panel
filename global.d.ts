@@ -96,7 +96,7 @@ type DataTableSort = {
 
 type SelectOption<T = any> = {
   title: string
-  value: string | number | EmptyString | boolean
+  value: string | number
   itemData?: T
 }
 

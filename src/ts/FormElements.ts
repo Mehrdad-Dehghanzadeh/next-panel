@@ -26,7 +26,6 @@ export type InputProps = {
   clearCb?: () => void
   prefixIcon?: ReactNode
   ltr?: boolean
-  dense?: boolean
 }
 
 export type SelectInputItem<T = any> = {
@@ -42,7 +41,6 @@ export type SelectInputProps<T = any> = {
   fieldTextClassName?: ClassValue
   scrollTop?: ScrollTop
   itemHoc?: (item: SelectOption<T>) => React.ReactNode
-  textHoc?: (item: SelectOption<T>) => React.ReactNode
   loading?: boolean
   noItemMessage?: string | React.ReactNode
 }

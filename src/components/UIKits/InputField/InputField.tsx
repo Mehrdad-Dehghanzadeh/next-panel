@@ -32,7 +32,14 @@ export const InputField: FC<InputFieldProps> = ({
 }) => {
   const renderFC: RenderFC = {
     render({ field, fieldState }) {
-      const { selfId, ownColor } = useFormElements({ id, color, fieldState })
+      const { selfId, ownColor, clear, enableClear } = useFormElements({
+        id,
+        color,
+        fieldState,
+        field,
+        clearable,
+        disabled
+      })
 
       const onChangeEvent: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         const newChangeEvent = convertValue
@@ -44,15 +51,6 @@ export const InputField: FC<InputFieldProps> = ({
 
         field.onChange(newChangeEvent)
         onChange?.(newChangeEvent)
-      }
-
-      const clear = () => {
-        field.onChange('')
-        clearCb?.()
-      }
-
-      const enableClear = (): boolean => {
-        return clearable && Boolean(field.value) && !disabled
       }
 
       return (

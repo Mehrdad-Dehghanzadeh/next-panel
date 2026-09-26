@@ -1,13 +1,25 @@
 import { useEffect, useId } from 'react'
-import type { ControllerFieldState } from 'react-hook-form'
+import type { ControllerFieldState, ControllerRenderProps } from 'react-hook-form'
 
 export type TArg = {
   id: string | undefined
   color?: any
   fieldState?: ControllerFieldState
+  clearCb?: () => void
+  clearable?: boolean
+  field?: ControllerRenderProps
+  disabled?: boolean
 }
 
-export function useFormElements({ id, fieldState, color }: TArg) {
+export function useFormElements({
+  id,
+  fieldState,
+  color,
+  field,
+  clearCb,
+  clearable,
+  disabled
+}: TArg) {
   const _id = useId()
 
   const setSelfId = (): string => {
@@ -19,14 +31,24 @@ export function useFormElements({ id, fieldState, color }: TArg) {
   const setColor = () => {
     return fieldState?.invalid ? 'red' : color
   }
+
   let ownColor = setColor()
 
-  useEffect(() => {
-    console.log(ownColor)
-  }, [fieldState?.invalid])
+  const clear = () => {
+    field?.onChange?.('')
+    clearCb?.()
+  }
+
+  const enableClear = (): boolean => {
+    return Boolean(clearable) && Boolean(field?.value) && Boolean(!disabled)
+  }
+
+  useEffect(() => {}, [fieldState?.invalid])
 
   return {
     selfId,
-    ownColor
+    ownColor,
+    enableClear,
+    clear
   }
 }
