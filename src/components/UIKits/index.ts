@@ -6,3 +6,6 @@ export * from './InputField/TInputField'
 
 export * from './SelectField/SelectField'
 export * from './SelectField/TSelectField'
+
+export * from './TextAreaField/TTextAreaField'
+export * from './TextAreaField/TextAreaField'

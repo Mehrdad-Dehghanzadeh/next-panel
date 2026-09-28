@@ -6,6 +6,7 @@
 }
 
 .control__input--error > input::placeholder,
+.control__input--error > textarea::placeholder,
 .control__input--error > .rt-SelectTriggerInner,
 .control__input--error > .rt-SelectIcon {
   color: var(--red-9);

@@ -1,12 +1,16 @@
 'use client'
 import { requiredRule, nationalCodeRule } from '@assets/validationsRules'
 import { Button } from '@radix-ui/themes'
-import { DataTable, InputField, SelectField } from '@UIKits'
+import { DataTable, InputField, SelectField, TextAreaField } from '@UIKits'
 import { useForm } from 'react-hook-form'
 
 export default function Home() {
-  const { control, handleSubmit } = useForm<{ text1: string; select1: string }>({
-    defaultValues: { text1: '', select1: '' }
+  const { control, handleSubmit } = useForm<{
+    text1: string
+    select1: string
+    textarea1: string
+  }>({
+    defaultValues: { text1: '', select1: '', textarea1: 'qwe qweqwe eqwqw ' }
   })
 
   const onSubmit = (data: unknown) => {
@@ -53,6 +57,13 @@ export default function Home() {
             { title: 'title-1', value: '1' },
             { title: 'title-2', value: '2' }
           ]}
+        />
+
+        <TextAreaField
+          name="textarea1"
+          placeholder="text test"
+          control={control}
+          rules={{ required: requiredRule() }}
         />
 
         <Button type="submit">ذخیره</Button>
