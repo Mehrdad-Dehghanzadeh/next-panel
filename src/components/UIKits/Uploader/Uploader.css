@@ -1,0 +1,28 @@
+.uploader__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: none;
+}
+
+.uploader__wrapper-dashed {
+  border: 2px dashed #dbdbdb;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.uploader__title {
+  font-weight: 400;
+  margin-bottom: 24px;
+  line-height: 100%;
+  color: #000;
+  display: block;
+}
+
+.uploader__content {
+  margin-bottom: 8px;
+}
+
+.uploader__btn {
+}

@@ -1,7 +1,7 @@
 'use client'
 import { requiredRule, nationalCodeRule } from '@assets/validationsRules'
 import { Button } from '@radix-ui/themes'
-import { DataTable, InputField, SelectField, TextAreaField } from '@UIKits'
+import { DataTable, InputField, SelectField, TextAreaField, Uploader } from '@UIKits'
 import { useForm } from 'react-hook-form'
 
 export default function Home() {
@@ -65,6 +65,8 @@ export default function Home() {
           control={control}
           rules={{ required: requiredRule() }}
         />
+
+        <Uploader control={control} name="file1" />
 
         <Button type="submit">ذخیره</Button>
       </form>

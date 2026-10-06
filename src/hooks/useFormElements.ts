@@ -43,8 +43,6 @@ export function useFormElements({
     return Boolean(clearable) && Boolean(field?.value) && Boolean(!disabled)
   }
 
-  useEffect(() => {}, [fieldState?.invalid])
-
   return {
     selfId,
     ownColor,

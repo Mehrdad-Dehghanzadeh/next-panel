@@ -1,6 +1,6 @@
 'use client'
 import type { InputFieldProps } from './TInputField'
-import { RenderFC } from '@/ts/FormElements'
+import type { RenderFC } from '@/ts/FormElements'
 import { useFormElements } from '@hooks'
 import { type FC } from 'react'
 import clsx from 'clsx'
