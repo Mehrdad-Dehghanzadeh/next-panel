@@ -1,7 +1,14 @@
 'use client'
 import { requiredRule, nationalCodeRule } from '@assets/validationsRules'
 import { Button } from '@radix-ui/themes'
-import { DataTable, InputField, SelectField, TextAreaField, Uploader } from '@UIKits'
+import {
+  DataTable,
+  InputField,
+  SelectField,
+  TextAreaField,
+  Uploader,
+  DateField
+} from '@UIKits'
 import { useForm } from 'react-hook-form'
 
 export default function Home() {
@@ -9,8 +16,9 @@ export default function Home() {
     text1: string
     select1: string
     textarea1: string
+    date: string
   }>({
-    defaultValues: { text1: '', select1: '', textarea1: 'qwe qweqwe eqwqw ' }
+    defaultValues: { text1: '', select1: '', textarea1: 'qwe qweqwe eqwqw ', date: '' }
   })
 
   const onSubmit = (data: unknown) => {
@@ -29,6 +37,8 @@ export default function Home() {
         ]}
         data={[{ name: 'mehrdad', family: 'dehghanzadeh' }]}
       ></DataTable>
+
+      <DateField control={control} name="date" />
 
       <DataTable
         headers={[

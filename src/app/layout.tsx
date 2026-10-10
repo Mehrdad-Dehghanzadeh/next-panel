@@ -3,6 +3,7 @@ import { Direction } from 'radix-ui'
 import { Theme } from '@radix-ui/themes'
 import { Snackbar, MainHeader, AsideMenu, MainContainer } from '@Roots'
 import localFont from 'next/font/local'
+import { DATE_FIELD_ROOT_ID } from '@constants'
 import '@styles/index.css'
 import './layout.css'
 
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="fa" dir="rtl">
       <Direction.Provider dir="rtl">
         <body className={iranYekan.className}>
+          <div id={DATE_FIELD_ROOT_ID}></div>
           <Theme>
             <Snackbar />
 
