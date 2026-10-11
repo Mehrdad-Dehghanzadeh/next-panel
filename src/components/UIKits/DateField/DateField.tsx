@@ -6,12 +6,13 @@ import type { DayPickerLocale } from 'react-day-picker'
 import clsx from 'clsx'
 import { Controller } from 'react-hook-form'
 import type { DateRange } from '@daypicker/react'
-import type { RenderFC, DomRect } from '@ts/FormElements'
-import { useFormElements } from '@hooks'
+import type { RenderFC } from '@ts/FormElements'
+import { useDomRect, useFormElements } from '@hooks'
 import { TextField, Text } from '@radix-ui/themes'
 import { CrossCircledIcon, CalendarIcon } from '@radix-ui/react-icons'
 import { DATE_FIELD_ROOT_ID } from '@constants'
 import { DayPicker, faIR } from '@daypicker/persian'
+import { dateToJalaali } from '@utils'
 import './DateField.css'
 import '@daypicker/react/style.css'
 
@@ -43,25 +44,22 @@ export const DateField: FC<DateFieldProps> = ({
 }) => {
   const [selected, setSelected] = useState<DateRange | undefined>()
   const [open, setOpen] = useState<boolean>(false)
-  const [domRect, setDomRect] = useState<DomRect | null>(null)
   const [menuRoot, setMenuRoot] = useState<HTMLDivElement | null>(null)
-  const fieldRef = useRef<HTMLDivElement>(null)
 
-  const calculateDomRect = () => {
-    if (fieldRef.current) {
-      const client = fieldRef.current.getBoundingClientRect()
-      setDomRect(() => ({
-        width: `${client.width}px`,
-        top: `${client.top + client.height}px`,
-        left: `${client.x}px`
-      }))
-    }
-  }
+  const { elRef, domRect, calculateDomRect, clearDomRect } = useDomRect()
 
   const clickOuter: MouseEventHandler<HTMLDivElement> = (e) => {
     e?.preventDefault?.()
     setOpen(false)
+    clearDomRect()
   }
+
+  useEffect(() => {
+    const el = document.getElementById(DATE_FIELD_ROOT_ID) as HTMLDivElement
+    if (el) {
+      setMenuRoot(el)
+    }
+  }, [])
 
   const renderFC: RenderFC = {
     render({ field, fieldState }) {
@@ -75,11 +73,35 @@ export const DateField: FC<DateFieldProps> = ({
       })
 
       const onChangeEvent: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        const newChangeEvent = e
-
-        field.onChange(newChangeEvent)
-        onChange?.(newChangeEvent)
+        onChange?.(e)
       }
+
+      const onClickTextField: MouseEventHandler<HTMLInputElement> = (e) => {
+        e.stopPropagation()
+        onClick?.(e)
+        setOpen(true)
+        calculateDomRect()
+      }
+
+      const convertValue = () => {
+        let val = ''
+
+        if (selected?.from && selected?.to) {
+          const from = dateToJalaali(selected?.from)
+          const to = dateToJalaali(selected?.to)
+          val = `${from} - ${to}`
+        }
+
+        return val
+      }
+
+      const setValue = () => {
+        field.onChange([selected?.from?.toISOString(), selected?.to?.toISOString()])
+      }
+
+      useEffect(() => {
+        setValue()
+      }, [selected])
 
       return (
         <div className="control">
@@ -90,17 +112,12 @@ export const DateField: FC<DateFieldProps> = ({
             size={size}
             variant={variant}
             id={selfId}
-            value={field.value}
+            value={convertValue()}
             color={ownColor}
             disabled={disabled}
             aria-invalid={fieldState.invalid}
             onChange={onChangeEvent}
-            onClick={(e) => {
-              e.stopPropagation()
-              onClick?.(e)
-              setOpen(true)
-              calculateDomRect()
-            }}
+            onClick={onClickTextField}
             {...props}
           >
             {Boolean(prefix) && (
@@ -125,16 +142,9 @@ export const DateField: FC<DateFieldProps> = ({
     }
   }
 
-  useEffect(() => {
-    const el = document.getElementById(DATE_FIELD_ROOT_ID) as HTMLDivElement
-    if (el) {
-      setMenuRoot(el)
-    }
-  }, [])
-
   return (
     <>
-      <div className={clsx('date-picker')} ref={fieldRef}>
+      <div className={clsx('date-picker')} ref={elRef}>
         <Controller
           control={control}
           name={name}

@@ -1,3 +1,5 @@
+import { toJalaali } from 'jalaali-js'
+
 export function price(
   val: number | string | null,
   currency: string = 'ریال',
@@ -78,4 +80,29 @@ export function convertNumbers2English(string: any) {
     .replace(/[۰۱۲۳۴۵۶۷۸۹]/g, function (c: any) {
       return c.charCodeAt(0) - 1776
     })
+}
+
+export function utcToJalaali(utc: string, hideTime: boolean = false): string {
+  const str = utc.split('T')
+  const date = str[0]?.split('-')
+  const jDate = date ? toJalaali(Number(date[0]), Number(date[1]), Number(date[2])) : ''
+  const time =
+    !hideTime && str[1]?.split(':')
+      ? `${str[1]?.split(':')[0]}:${str[1]?.split(':')[1]}`
+      : ''
+  //@ts-ignore
+  const strDate = Boolean(jDate.jm && jDate.jy && jDate.jd)
+    ? //@ts-ignore
+      `${jDate.jy}/${jDate.jm}/${jDate.jd}`
+    : ''
+
+  return `${strDate}` + (time ? ` - ${time}` : '')
+}
+
+export function dateToJalaali(date: Date) {
+  const c = toJalaali(date)
+  const month = c.jm > 10 ? `${c.jm}` : `0${c.jm}`
+  const day = c.jd > 10 ? `${c.jd}` : `0${c.jd}`
+
+  return `${c.jy}/${month}/${day}`
 }

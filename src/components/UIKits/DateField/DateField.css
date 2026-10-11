@@ -14,3 +14,21 @@
   z-index: 12;
   background-color: #fff;
 }
+
+.date-field__wrapper .rdp-months {
+  width: 100%;
+  max-width: initial;
+}
+
+.date-field__wrapper .rdp-month,
+.date-field__wrapper .rdp-month_grid {
+  width: 100%;
+}
+
+.date-field__wrapper .rdp-day_button {
+  margin: 0 auto;
+}
+
+.date-field__wrapper .rdp-month_caption {
+  padding: 4px 12px;
+}
